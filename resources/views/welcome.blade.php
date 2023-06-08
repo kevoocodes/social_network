@@ -23,22 +23,32 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
+     <p class="bg-primary">@include('partials.messages')</p> 
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="../../index3.html" method="post">
+      <form action="" method="POST">
+        @csrf
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="username" name="username" value="{{old('username')}}" class="form-control" placeholder="Username orEmail">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+                @if($errors->has('username'))
+                <div class="text-danger">
+                  {{$errors->first('username')}}
+                </div>
+                @endif
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+                @if ($errors->has('password'))
+                    <div class="text-danger">
+                    {{$errors->first('password')}}
+                    </div>
+                @endif
             </div>
           </div>
         </div>
@@ -53,7 +63,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" name="login" class="btn btn-primary btn-block">Sign In</button>
           </div>
           <!-- /.col -->
         </div>

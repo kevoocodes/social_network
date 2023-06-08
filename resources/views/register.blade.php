@@ -25,47 +25,60 @@
     <div class="card-body register-card-body">
       <p class="login-box-msg">Register a new membership</p>
 
-      <form action="../../index.html" method="post">
+      <form action="" method="post">
+        @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Full name">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
+          <input type="text" name="fullname"  value="{{old('fullname')}}" class="form-control" placeholder="Full name">
+            @if ($errors->has('fullname'))
+            <div class="error text-danger">
+                {{ $errors->first('fullname')}}
             </div>
-          </div>
+            @endif
         </div>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
+          <input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
+          @if ($errors->has('email'))
+          <div class="error text-danger">
+            {{ $errors->first('email')}}
           </div>
+          @endif
         </div>
 
         <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Username">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-envelope"></span>
-              </div>
+            <input type="text" name="username" class="form-control" placeholder="Username">
+            @if ($errors->has('username'))
+            <div class="error text-danger">
+              {{ $errors->first('username')}}
             </div>
+            @endif
           </div>
+
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
+            <input type="text" name="phonenumber" class="form-control" placeholder="phonenumber"> <br>
+            <div class="input-group-append">
+                @if ($errors->has('phonenumber'))
+                <div class="error text-danger">
+                  {{ $errors->first('phonenumber')}}
+                </div>
+                @endif
+              </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="password" name="password" class="form-control" placeholder="Password">
+          @if ($errors->has('password'))
+          <div class="error text-danger">
+            {{ $errors->first('password')}}
           </div>
+          @endif
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Retype password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
+          <input type="password" name="password_comfirmation" class="form-control" placeholder="Retype password">
+          @if ($errors->has('password_comfirmation'))
+                      <div class="error text-danger">
+                        {{ $errors->first('password_comfirmation')}}
+                      </div>
+        @endif
         </div>
         <div class="row">
           <div class="col-8">
@@ -78,7 +91,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <button type="submit" name="submit" class="btn btn-primary btn-block">Register</button>
           </div>
           <!-- /.col -->
         </div>
