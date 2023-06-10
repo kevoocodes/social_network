@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -23,3 +24,7 @@ Route::get('/welcome', [LoginController::class, 'showLoginPage']);  //Route that
 Route::get('/register', [RegisterController::class, 'showRegisterPage']);  //Routes that makes register
 Route::post('/register', [RegisterController::class, 'userRegister']);  //for registration
 Route::post('/welcome', [LoginController::class, 'userLogin'])->name('login'); //for login
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/dashboard', [DashboardController::class, 'showDashboardPage']);
+});
