@@ -14,4 +14,11 @@ class Professionals extends Model
             return $this->hasMany(Post::class);
     }
 
+    protected $table = 'professionals';
+
+    protected $fillable = [
+        'name',
+        // Add other fillable fields as needed
+    ];
+
 }
