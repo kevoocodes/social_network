@@ -25,7 +25,7 @@
     <div class="card-body register-card-body">
       <p class="login-box-msg">Register a new membership</p>
 
-      <form action="" method="post">
+      <form action="" method="post" enctype="multipart/form-data">
         @csrf
         <div class="input-group mb-3">
           <input type="text" name="fullname"  value="{{old('fullname')}}" class="form-control" placeholder="Full name">
@@ -45,7 +45,7 @@
         </div>
 
         <div class="input-group mb-3">
-            <input type="text" name="username" class="form-control" placeholder="Username">
+            <input type="text" name="username" value="{{old('username')}}" class="form-control" placeholder="Username">
             @if ($errors->has('username'))
             <div class="error text-danger">
               {{ $errors->first('username')}}
@@ -54,7 +54,7 @@
           </div>
 
         <div class="input-group mb-3">
-            <input type="text" name="phonenumber" class="form-control" placeholder="phonenumber"> <br>
+            <input type="text" name="phonenumber" value="{{old('phonenumber')}}" class="form-control" placeholder="phonenumber"> <br>
             <div class="input-group-append">
                 @if ($errors->has('phonenumber'))
                 <div class="error text-danger">
@@ -63,6 +63,18 @@
                 @endif
               </div>
         </div>
+
+        <div class="input-group mb-3">
+          <label for="">Your Image</label> <br>
+          <input type="file" name="image"  class="form-control" placeholder="image"> <br>
+          <div class="input-group-append">
+              @if ($errors->has('image'))
+              <div class="error text-danger">
+                {{ $errors->first('image')}}
+              </div>
+              @endif
+          </div>
+      </div>
 
         <div class="input-group mb-3">
           <input type="password" name="password" class="form-control" placeholder="Password">

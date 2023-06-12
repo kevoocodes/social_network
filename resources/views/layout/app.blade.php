@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="{{asset('assets/dist/css/adminlte.min.css')}}">
     <!-- ck editor -->
 <script src="https://cdn.ckeditor.com/ckeditor5/19.1.1/classic/ckeditor.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
   <style>
     .navbar-static {
       position: fixed;
@@ -174,7 +175,8 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('assets/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+        
+          <img class="img-circle elevation-2" src="{{ Storage::url(auth()->user()->image) }}" alt="User Avatar">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{auth()->user()->fullname}}</a>
@@ -227,15 +229,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
+         
           <li class="nav-item">
             <a href="../calendar.html" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
@@ -261,6 +255,17 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{{ route('logout.perform') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               Logout
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -318,5 +323,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('assets/dist/js/demo.js')}}"></script>
 <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 </body>
 </html>

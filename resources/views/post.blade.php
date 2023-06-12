@@ -12,7 +12,7 @@
               <div class="card card-widget">
                 <div class="card-header">
                   <div class="user-block">
-                    <img class="img-circle" src="{{asset('assets/dist/img/user1-128x128.jpg')}}" alt="User Image">
+                    <img class="img-circle img-bordered-sm" src="{{ Storage::url($post->user->image) }}" alt="User Avatar">
                     <span class="username"><a href="/Customer/user-profile/{{$post->user->id}}">{{$post->user->fullname }}</a></span>
                     <span class="description">{{$post->user->username}} - {{$post->created_at->diffForHumans()}}</span>
                   </div>
@@ -45,7 +45,7 @@
                   <form class="form-horizontal" action="{{route('comment.store', ['id' => $post->id])}}" method="POST">
                     @csrf
                       <div class="input-group input-group-sm mb-0">
-                          <img class="img-fluid img-circle img-sm" src="{{asset('assets/dist/img/user1-128x128.jpg')}}" alt="Alt Text">
+                        <img class="img-fluid img-circle img-sm" src="{{ Storage::url(auth()->user()->image) }}" alt="User Avatar">
                         <input type="text" name="comment" class="form-control form-control-sm" placeholder="Response">
                              
                         <div class="input-group-append">
@@ -69,7 +69,8 @@
                       @foreach ($comments as $comment)
                       <div class="card-comment">
                         <!-- User image -->
-                        <img class="img-circle img-sm" src="{{asset('assets/dist/img/user1-128x128.jpg')}}" alt="User Image">
+
+                        <img class="img-circle img-sm" src="{{ Storage::url($comment->user->image) }}" alt="User Avatar">
       
                         <div class="comment-text">
                           <span class="username">

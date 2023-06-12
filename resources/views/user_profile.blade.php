@@ -18,7 +18,7 @@
                         <h5 class="widget-user-desc">{{$usersProfile->username}}</h5>
                       </div>
                       <div class="widget-user-image">
-                        <img class="img-circle elevation-2" src="{{asset('assets/dist/img/user1-128x128.jpg')}}" alt="User Avatar">
+                        <img class="img-circle elevation-2" src="{{ Storage::url($usersProfile->image) }}" alt="User Avatar">
                       </div>
                       <div class="card-footer">
                         <div class="row">
@@ -46,7 +46,9 @@
                               <div class="card-body">
                                 <div class="post">
                                   <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="{{asset('assets/dist/img/user1-128x128.jpg')}}" alt="user image">
+
+                                    <img class="img-circle elevation-2" src="{{ Storage::url($post->user->image) }}" alt="User Avatar">
+                                    
                                     <span class="username">
                                       <a href="/Customer/user-profile/{{$post->user->id}}">{{ $post->user->fullname  }}</a>
                                       <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
@@ -54,7 +56,7 @@
                                     <span class="description">{{$post->user->username}} - {{$post->created_at->diffForHumans()}}</span>
                                   </div>
                                   <!-- /.user-block -->
-                                  <a href="/Customer/post/{{$post->id}}">
+                                  <a href="/post/{{$post->id}}">
                                     <p style="color: #000">                 
                                       {{$post->content}}
                                     </p>

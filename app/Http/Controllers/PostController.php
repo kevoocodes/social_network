@@ -48,8 +48,15 @@ class PostController extends Controller
     }
 
     public function ShowAllPosts() {
-        $posts = Posts::withCount('comment')->get();
-         return  view('dashboard', compact('posts'));
+        
+        // $posts = Posts::withCount('comment')->get();
+        //  return  view('dashboard', compact('posts'));
+
+            $posts = Posts::withCount('comment')->latest()->get();
+            $allPosts = $posts->sortByDesc('created_at');
+            $trendingPosts = $posts->sortByDesc('comment_count');
+
+            return view('dashboard', compact('allPosts', 'trendingPosts'));
      }
 
     public function showPostPage($id) {

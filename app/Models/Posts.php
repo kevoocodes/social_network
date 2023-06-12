@@ -29,4 +29,9 @@ class Posts extends Model
         return $this->belongsTo(Professional::class);
     }
 
+    public function likes()
+    {
+        return $this->hasMany(Likes::class);
+    }
+
 }

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
@@ -40,4 +42,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('/profile/{id}', [PostController::class, 'deletePost'])->name('post.destroy'); // function that delete post
     Route::get('/update_profile', [UserController::class, 'showUpdateProfilePage']);  //This is route to get update profile page
     Route::post('/update_profile', [UserController::class, 'updateProfile']); //This is route perfom profile update
+    // Route::post('/dashboard/{post}', 'LikeController@toggleLike');
+    // Route::post('/dashboard/{post}', [LikeController::class, 'toggleLike']); //This is route perfom profile update
+    Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perform'); 
+
 });
