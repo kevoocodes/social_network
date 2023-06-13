@@ -6,7 +6,9 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfessionalController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,5 +47,11 @@ Route::group(['middleware' => ['auth']], function() {
     // Route::post('/dashboard/{post}', 'LikeController@toggleLike');
     // Route::post('/dashboard/{post}', [LikeController::class, 'toggleLike']); //This is route perfom profile update
     Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perform'); 
+    Route::get('/professional_posts/{id}', [ProfessionalController::class, 'viewProfessionalPosts']); //shows posts page
+    Route::get('/search', [SearchController::class, 'search'])->name('search'); //search posts,professional,users
+    Route::get('/choose_professional', [ProfessionalController::class, 'viewProfesionalPage']); //Choose professional
+    Route::post('/choose_professional', [ProfessionalController::class, 'storeProfessionals'])->name('store-professionals'); //Choose professional
+    
+
 
 });

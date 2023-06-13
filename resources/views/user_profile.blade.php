@@ -56,9 +56,9 @@
                                     <span class="description">{{$post->user->username}} - {{$post->created_at->diffForHumans()}}</span>
                                   </div>
                                   <!-- /.user-block -->
-                                  <a href="/post/{{$post->id}}">
+                                  <a href="/post/{{$post->id}}" style="color: #000">
                                     <p style="color: #000">                 
-                                      {{$post->content}}
+                                      {!!$post->content!!}
                                     </p>
                                   </a>
                                 

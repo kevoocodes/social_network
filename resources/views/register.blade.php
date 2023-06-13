@@ -18,7 +18,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Social</b>NETWORKING</a>
+    <a href="../../index2.html"><b>PRO</b> Talk</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -27,7 +27,7 @@
 
       <form action="" method="post" enctype="multipart/form-data">
         @csrf
-        <div class="input-group mb-3">
+        <div class="form-group mb-3">
           <input type="text" name="fullname"  value="{{old('fullname')}}" class="form-control" placeholder="Full name">
             @if ($errors->has('fullname'))
             <div class="error text-danger">
@@ -35,7 +35,7 @@
             </div>
             @endif
         </div>
-        <div class="input-group mb-3">
+        <div class="form-group mb-3">
           <input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
           @if ($errors->has('email'))
           <div class="error text-danger">
@@ -44,7 +44,7 @@
           @endif
         </div>
 
-        <div class="input-group mb-3">
+        <div class="form-group mb-3">
             <input type="text" name="username" value="{{old('username')}}" class="form-control" placeholder="Username">
             @if ($errors->has('username'))
             <div class="error text-danger">
@@ -53,9 +53,9 @@
             @endif
           </div>
 
-        <div class="input-group mb-3">
+        <div class="form-group mb-3">
             <input type="text" name="phonenumber" value="{{old('phonenumber')}}" class="form-control" placeholder="phonenumber"> <br>
-            <div class="input-group-append">
+            <div class="form-group-append">
                 @if ($errors->has('phonenumber'))
                 <div class="error text-danger">
                   {{ $errors->first('phonenumber')}}
@@ -64,10 +64,10 @@
               </div>
         </div>
 
-        <div class="input-group mb-3">
+        <div class="form-group mb-3">
           <label for="">Your Image</label> <br>
           <input type="file" name="image"  class="form-control" placeholder="image"> <br>
-          <div class="input-group-append">
+          <div class="form-group-append">
               @if ($errors->has('image'))
               <div class="error text-danger">
                 {{ $errors->first('image')}}
@@ -76,7 +76,7 @@
           </div>
       </div>
 
-        <div class="input-group mb-3">
+        <div class="form-group mb-3">
           <input type="password" name="password" class="form-control" placeholder="Password">
           @if ($errors->has('password'))
           <div class="error text-danger">
@@ -84,7 +84,7 @@
           </div>
           @endif
         </div>
-        <div class="input-group mb-3">
+        <div class="form-group mb-3">
           <input type="password" name="password_comfirmation" class="form-control" placeholder="Retype password">
           @if ($errors->has('password_comfirmation'))
                       <div class="error text-danger">
@@ -109,7 +109,7 @@
         </div>
       </form>
 
-      <div class="social-auth-links text-center">
+      {{-- <div class="social-auth-links text-center">
         <p>- OR -</p>
         <a href="#" class="btn btn-block btn-primary">
           <i class="fab fa-facebook mr-2"></i>
@@ -119,7 +119,7 @@
           <i class="fab fa-google-plus mr-2"></i>
           Sign up using Google+
         </a>
-      </div>
+      </div> --}}
 
       <a href="/welcome" class="text-center">I already have a membership</a>
     </div>

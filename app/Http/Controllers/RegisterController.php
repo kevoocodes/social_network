@@ -33,6 +33,6 @@ class RegisterController extends Controller
         $user = User::create($validatedData);
         auth()->login($user);
 
-        return redirect('welcome')->with('success', "Account successfully registered. Please Login Here");
+        return redirect('choose_professional')->with('success', "Account successfully registered. Please Login Here");
     }
 }

@@ -48,7 +48,7 @@
                      @enderror
                   </div>
       
-                  <div class="form-group row">
+                  {{-- <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Image</label>
                     <div class="col-sm-10">
                       <input type="file"name="image" value=""  class="form-control" id="inputPassword3" placeholder="Lastname">
@@ -56,8 +56,8 @@
                            <span class="text-danger">{{ $message }}</span>
                       @enderror
                     </div>
-                  </div>
-                  <button type="submit" class="btn btn-info">Add Posts</button>
+                  </div> --}}
+                  <button type="submit" class="btn btn-info">Add Post</button>
             </form>
         
         </div><!-- /.card-body -->

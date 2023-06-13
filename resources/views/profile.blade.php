@@ -83,7 +83,7 @@
                                 <!-- /.user-block -->
                                 <p>
                 
-                                  {{$post->content}}
+                                  {!! $post->content !!}
                                   
                                 </p>
                 
@@ -97,7 +97,7 @@
                                   </span>
                                 </p>
                 
-                                <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
+                          
                               </div>
                             </div>
                           </div>

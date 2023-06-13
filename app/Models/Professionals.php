@@ -11,7 +11,8 @@ class Professionals extends Model
 
     public function posts()
     {
-            return $this->hasMany(Post::class);
+            // return $this->hasMany(Posts::class);
+            return $this->hasMany(Posts::class, 'professional_id');
     }
 
     protected $table = 'professionals';
@@ -20,5 +21,12 @@ class Professionals extends Model
         'name',
         // Add other fillable fields as needed
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'userprofessional', 'professional_id', 'user_id');
+    }
+
+    
 
 }

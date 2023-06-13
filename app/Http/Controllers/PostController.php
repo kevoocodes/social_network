@@ -15,24 +15,12 @@ class PostController extends Controller
         return view('create_post',compact('professionals'));
     }
 
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'content' => 'required',
-    //         'image' => 'required|image|mimes:jpeg,png,jpg,gif',
-    //         'professional_id' => 'required|exists:App\Models\Professionals,id'
-    //     ]);
-    //     Posts::create([
-           
-    //     ]);
 
-    //     return redirect()->route('posts.index')->with('status', 'Post Created Successfully');
-    // }
 
     public function addPost(Request  $request) {
         $formfields = $request->validate([
                 'content' => 'required',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+                // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
                 'professional_id' => 'required|exists:App\Models\Professionals,id'
         ]);
 
@@ -40,7 +28,7 @@ class PostController extends Controller
         $post->user_id = auth()->user()->id;
         $post->content = $request->input('content');
         $post->professional_id = $request->input('professional_id');
-        $post->image = $request->input('image');
+        // $post->image = $request->input('image');
 
         $post->save();
         return redirect('create_post')->with('success', 'Your have been adding post.');
@@ -49,14 +37,21 @@ class PostController extends Controller
 
     public function ShowAllPosts() {
         
-        // $posts = Posts::withCount('comment')->get();
-        //  return  view('dashboard', compact('posts'));
 
             $posts = Posts::withCount('comment')->latest()->get();
             $allPosts = $posts->sortByDesc('created_at');
             $trendingPosts = $posts->sortByDesc('comment_count');
+            $professionals = Professionals::all();
 
-            return view('dashboard', compact('allPosts', 'trendingPosts'));
+
+            $userId = auth()->user()->id; // Get the ID of the authenticated user
+        
+            $post = Posts::join('userprofessional', 'posts.professional_id', '=', 'userprofessional.professional_id')
+                ->where('userprofessional.user_id', $userId)
+                ->get();
+        
+
+            return view('dashboard', compact('allPosts', 'trendingPosts', 'professionals', 'post'));
      }
 
     public function showPostPage($id) {
@@ -82,6 +77,18 @@ class PostController extends Controller
         } else {
             return redirect('profile')->with('success', 'You do not have permission to delete this post');
         }
+    }
+
+    public function ShowPostsProfessional()
+    {
+        $userId = auth()->user()->id; // Get the ID of the authenticated user
+        $professionals = Professionals::all();
+
+        $post = Posts::join('userprofessional', 'posts.professional_id', '=', 'userprofessional.professional_id')
+            ->where('userprofessional.user_id', $userId)
+            ->get();
+
+        return view('dashboard', compact('post', 'professionals'));
     }
 
 }

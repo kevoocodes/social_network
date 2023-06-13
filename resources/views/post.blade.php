@@ -33,7 +33,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                   <!-- post text -->
-                  <p>{{$post->content}}</p>
+                  <p>{!! $post->content !!}</p>
   
               
           

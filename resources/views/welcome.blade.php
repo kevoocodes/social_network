@@ -18,20 +18,20 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Social</b>NETWORKING</a>
+    <a href="../../index2.html"><b>PRO</b> Talk</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-     <p class="bg-primary">@include('partials.messages')</p> 
+     <p class="bg-primary text-black">@include('partials.messages')</p> 
       <p class="login-box-msg">Sign in to start your session</p>
 
       <form action="" method="POST">
         @csrf
-        <div class="input-group mb-3">
+        <div class="form-group mb-3">
           <input type="username" name="username" value="{{old('username')}}" class="form-control" placeholder="Username orEmail">
-          <div class="input-group-append">
-            <div class="input-group-text">
+          <div class="form-group-append">
+            <div class="form-group-text">
                 @if($errors->has('username'))
                 <div class="text-danger">
                   {{$errors->first('username')}}
@@ -40,10 +40,10 @@
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
+        <div class="form-group mb-3">
           <input type="password" name="password" class="form-control" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
+          <div class="form-group-append">
+            <div class="form-group-text">
                 @if ($errors->has('password'))
                     <div class="text-danger">
                     {{$errors->first('password')}}
@@ -69,7 +69,7 @@
         </div>
       </form>
 
-      <div class="social-auth-links text-center mb-3">
+      {{-- <div class="social-auth-links text-center mb-3">
         <p>- OR -</p>
         <a href="#" class="btn btn-block btn-primary">
           <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
@@ -77,7 +77,7 @@
         <a href="#" class="btn btn-block btn-danger">
           <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
         </a>
-      </div>
+      </div> --}}
       <!-- /.social-auth-links -->
 
       <p class="mb-1">

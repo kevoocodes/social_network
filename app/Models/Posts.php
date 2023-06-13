@@ -26,7 +26,7 @@ class Posts extends Model
 
     public function professional()
     {
-        return $this->belongsTo(Professional::class);
+        return $this->belongsTo(Professionals::class);
     }
 
     public function likes()
